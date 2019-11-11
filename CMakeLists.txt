@@ -1,51 +1,29 @@
 cmake_minimum_required(VERSION 3.15)
 project(riichi_calculator LANGUAGES CXX)
 
-# Add local project module path so CMake includes custom CMake modules
-list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
-
-include(CTest)
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE=Release ... FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
 
 # Project flags
     add_compile_options(-pedantic -Werror -Wall -Wextra -std=c++17)
 # Debug flags
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -DDEBUG
-    -fsanitize=address -g3 -fno-omit-frame-pointer")
+#    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -DDEBUG
+#    -fsanitize=address -g3 -fno-omit-frame-pointer")
 # Release flags
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -Ofast")
+#    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -Ofast")
 
-# Header folders
-include_directories(
-    src
-)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-# Objects
-set(SOURCES
-    src/main.cpp
-)
-
-# Libs
-set(LIBS
-)
 
 # riichi_calculator
-add_executable(riichi_calculator ${SOURCES})
-target_link_libraries(riichi_calculator ${LIBS})
+add_subdirectory(src)
 
 
-
-find_package(Catch2 REQUIRED)
-
-# tests
-add_executable(unit_tests
-    test/main.cpp
-    test/empty_test.cpp
-)
-target_link_libraries(unit_tests Catch2::Catch2)
-
-include(ParseAndAddCatchTests)
-ParseAndAddCatchTests(unit_tests)
-
+# unit_tests
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+    add_subdirectory(test)
+endif(CMAKE_BUILD_TYPE MATCHES Debug)
 
 
 # Doc rule
