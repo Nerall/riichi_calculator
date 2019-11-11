@@ -1,0 +1,12 @@
+# Forbidden files
+*~
+*.swp
+*.o
+*.a
+*.so
+*.class
+*.log
+*.core
+
+# Build directory
+build
