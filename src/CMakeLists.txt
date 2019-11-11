@@ -1,9 +1,7 @@
 include_directories(
 )
 
-set(SOURCES
-    main.cpp
-)
+file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.hpp *.cpp)
 
 set(LIBS
 )

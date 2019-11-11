@@ -8,13 +8,15 @@ endif(NOT CMAKE_BUILD_TYPE)
 # Project flags
     add_compile_options(-pedantic -Werror -Wall -Wextra -std=c++17)
 # Debug flags
-#    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -DDEBUG
-#    -fsanitize=address -g3 -fno-omit-frame-pointer")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -DDEBUG \
+-fsanitize=address -g3 -fno-omit-frame-pointer")
 # Release flags
-#    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -Ofast")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -Ofast")
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
+
+include_directories(src)
 
 # riichi_calculator
 add_subdirectory(src)

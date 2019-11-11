@@ -37,7 +37,7 @@ enum class Tile : char
     PAASOU,
     KYUUSOU,
     TON,
-    NAN,
+    NAN_,
     SHAA,
     PEI,
     HAKU,
