@@ -4,7 +4,7 @@
  * \mainpage Documentation Chess
 
  * \authors
- * tertre_m
+ * Neral
  */
 
 int main(int argc, char* argv[])
