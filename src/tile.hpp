@@ -7,6 +7,27 @@
 namespace rc
 {
 
+enum class TileType : char
+{
+    WANZU,
+    PINZU,
+    SOUZU,
+    JIHAI
+};
+
+enum class TileValue : char
+{
+    II = 1,
+    RYAN,
+    SAN,
+    SUU,
+    UU,
+    ROU,
+    CHII,
+    PAA,
+    KYUU
+};
+
 enum class Tile : char
 {
     IIWAN,
@@ -46,18 +67,18 @@ enum class Tile : char
     NONE
 };
 
-enum class TileType : char
-{
-    WANZU,
-    PINZU,
-    SOUZU,
-    JIHAI
-};
-
 inline TileType tile_to_type(Tile tile)
 {
     assert(tile != Tile::NONE);
 
     return TileType(enum_to_char(tile) / 9);
 }
+
+inline TileValue tile_to_value(Tile tile)
+{
+    assert(enum_to_char(tile) < enum_to_char(Tile::TON));
+
+    return TileValue(1 + enum_to_char(tile) % 9);
 }
+
+} // namespace rc

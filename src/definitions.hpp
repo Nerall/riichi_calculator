@@ -11,4 +11,4 @@ char enum_to_char(const T& e)
 {
     return static_cast<char>(e);
 }
-}
+} // namespace rc
