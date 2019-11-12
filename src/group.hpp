@@ -13,7 +13,6 @@ enum class GroupType : char
     JUNTSU,
     KOUTSU,
     KANTSU,
-    NONE,
 }
 
 enum class Group : char
@@ -34,11 +33,13 @@ enum class Group : char
     DAIMINKAN_SHIMOCHA,
     DAIMINKAN_TOIMEN,
     DAIMINKAN_KAMICHA,
-    NONE = 40
+    NONE
 };
 
 inline GroupType group_to_type(Group group)
 {
+    assert(group != Group::NONE);
+
     return GroupType(enum_to_char(group) / 10);
 }
 } // namespace rc

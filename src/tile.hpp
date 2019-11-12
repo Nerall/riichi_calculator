@@ -17,7 +17,8 @@ enum class TileType : char
 
 enum class TileValue : char
 {
-    II = 1,
+    NO_VALUE,
+    II,
     RYAN,
     SAN,
     SUU,
@@ -76,9 +77,9 @@ inline TileType tile_to_type(Tile tile)
 
 inline TileValue tile_to_value(Tile tile)
 {
-    assert(enum_to_char(tile) < enum_to_char(Tile::TON));
-
-    return TileValue(1 + enum_to_char(tile) % 9);
+    assert(tile != Tile::NONE);
+    
+    return (tile < Tile::TON) ? TileValue(1 + enum_to_char(tile) % 9) : TileValue::NO_VALUE;
 }
 
 } // namespace rc

@@ -2,10 +2,8 @@
 
 #include <cassert>
 
-
 namespace rc
 {
-
     std::vector<Tile> TileGroup::get_tiles();
     {
         assert(tile_ != Tile::NONE);
@@ -21,10 +19,8 @@ namespace rc
         }
         else if (group_type == GroupType::TOITSU)
             tiles = std::vector<Tile>(tile_, tile_);
-
         else if (group_type == GroupType::KOUTSU)
             tiles = std::vector<Tile>(tile_, tile_, tile_);
-
         else // group_type == GroupType::KANTSU
             tiles = std::vector<Tile>(tile_, tile_, tile_, tile_);
 
