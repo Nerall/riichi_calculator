@@ -1,7 +1,6 @@
 #pragma once
 
-#include <cassert>
-
+#include <array>
 #include "definitions.hpp"
 
 namespace rc
@@ -9,77 +8,75 @@ namespace rc
 
 enum class TileType : char
 {
-    WANZU,
-    PINZU,
-    SOUZU,
-    JIHAI
+    kWanzu,
+    kPinzu,
+    kSouzu,
+    kJihai
 };
 
 enum class TileValue : char
 {
-    NO_VALUE,
-    II,
-    RYAN,
-    SAN,
-    SUU,
-    UU,
-    ROU,
-    CHII,
-    PAA,
-    KYUU
+    kNoValue,
+    kIi,
+    kRyan,
+    kSan,
+    kSuu,
+    kUu,
+    kRou,
+    kChii,
+    kPaa,
+    kKyuu
 };
 
 enum class Tile : char
 {
-    IIWAN,
-    RYANWAN,
-    SANWAN,
-    SUUWAN,
-    UUWAN,
-    ROUWAN,
-    CHIIWAN,
-    PAAWAN,
-    KYUUWAN,
-    IIPIN,
-    RYANPIN,
-    SANPIN,
-    SUUPIN,
-    UUPIN,
-    ROUPIN,
-    CHIIPIN,
-    PAAPIN,
-    KYUUPIN,
-    IISOU,
-    RYANSOU,
-    SANSOU,
-    SUUSOU,
-    UUSOU,
-    ROUSOU,
-    CHIISOU,
-    PAASOU,
-    KYUUSOU,
-    TON,
-    NAN_,
-    SHAA,
-    PEI,
-    HAKU,
-    HATSU,
-    CHUN,
-    NONE
+    kIiwan,
+    kRyanwan,
+    kSanwan,
+    kSuuwan,
+    kUuwan,
+    kRouwan,
+    kChiiwan,
+    kPaawan,
+    kKyuuwan,
+    kIipin,
+    kRyanpin,
+    kSanpin,
+    kSuupin,
+    kUupin,
+    kRoupin,
+    kChiipin,
+    kPaapin,
+    kKyuupin,
+    kIisou,
+    kRyansou,
+    kSansou,
+    kSuusou,
+    kUusou,
+    kRousou,
+    kChiisou,
+    kPaasou,
+    kKyuusou,
+    kTon,
+    kNan,
+    kShaa,
+    kPei,
+    kHaku,
+    kHatsu,
+    kChun,
+    kNone
 };
 
-inline TileType tile_to_type(Tile tile)
-{
-    assert(tile != Tile::NONE);
+constexpr std::array<Tile, 34> kNextTile = { Tile::kRyanwan, Tile::kSanwan, Tile::kSuuwan, Tile::kUuwan, Tile::kRouwan,
+    Tile::kChiiwan, Tile::kPaawan, Tile::kKyuuwan, Tile::kIiwan, Tile::kRyanpin, Tile::kSanpin, Tile::kSuupin,
+    Tile::kUupin, Tile::kRoupin, Tile::kChiipin, Tile::kPaapin, Tile::kKyuupin, Tile::kIipin, Tile::kRyansou,
+    Tile::kSansou, Tile::kSuusou, Tile::kUusou, Tile::kRousou, Tile::kChiisou, Tile::kPaasou, Tile::kKyuusou,
+    Tile::kIisou, Tile::kNan, Tile::kShaa, Tile::kPei, Tile::kTon, Tile::kHatsu, Tile::kChun, Tile::kHaku };
 
-    return TileType(enum_to_char(tile) / 9);
-}
+TileType TileToType(Tile tile);
 
-inline TileValue tile_to_value(Tile tile)
-{
-    assert(tile != Tile::NONE);
-    
-    return (tile < Tile::TON) ? TileValue(1 + enum_to_char(tile) % 9) : TileValue::NO_VALUE;
-}
+TileValue TileToValue(Tile tile);
+
+Tile NextTile(Tile tile);
 
 } // namespace rc

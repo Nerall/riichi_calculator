@@ -4,10 +4,10 @@ namespace rc
 {
 
 template <typename T>
-void unused(T &&) {}
+void Unused(T &&) {}
 
 template <typename T>
-char enum_to_char(const T& e)
+char EnumToChar(const T& e)
 {
     return static_cast<char>(e);
 }

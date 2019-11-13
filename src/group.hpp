@@ -9,37 +9,33 @@ namespace rc
 
 enum class GroupType : char
 {
-    TOITSU,
-    JUNTSU,
-    KOUTSU,
-    KANTSU,
-}
+    kToitsu,
+    kJuntsu,
+    kKoutsu,
+    kKantsu,
+};
 
 enum class Group : char
 {
-    TOITSU,
-    ANJUN = 10,
-    MINJUN_LEFT,
-    MINJUN_MIDDLE,
-    MINJUN_RIGHT,
-    ANKOU = 20,
-    MINKOU_SHIMOCHA,
-    MINKOU_TOIMEN,
-    MINKOU_KAMICHA,
-    ANKAN = 30,
-    SHOUMINKAN_SHIMOCHA,
-    SHOUMINKAN_TOIMEN,
-    SHOUMINKAN_KAMICHA,
-    DAIMINKAN_SHIMOCHA,
-    DAIMINKAN_TOIMEN,
-    DAIMINKAN_KAMICHA,
-    NONE
+    kToitsu,
+    kAnjun = 10,
+    kMinjunLeft,
+    kMinjunMiddle,
+    kMinjunRight,
+    kAnkou = 20,
+    kMinkouShimocha,
+    kMinkouToimen,
+    kMinkouKamicha,
+    kAnkan = 30,
+    kShouminkanShimocha,
+    kShouminkanToimen,
+    kShouminkanKamicha,
+    kDaiminkanShimocha,
+    kDaiminkanToimen,
+    kDaiminkanKamicha,
+    kNone
 };
 
-inline GroupType group_to_type(Group group)
-{
-    assert(group != Group::NONE);
+GroupType GroupToType(Group group);
 
-    return GroupType(enum_to_char(group) / 10);
-}
 } // namespace rc

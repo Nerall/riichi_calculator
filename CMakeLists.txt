@@ -14,9 +14,8 @@ endif(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -DNDEBUG -Ofast")
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+enable_testing()
 
-
-include_directories(src)
 
 # riichi_calculator
 add_subdirectory(src)

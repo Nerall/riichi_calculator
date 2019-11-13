@@ -1,12 +1,15 @@
-include(CTest)
-find_package(Catch2 REQUIRED)
+set(TEST_SOURCES
+    test_tile.cpp
+    test_group.cpp)
 
-file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.hpp *.cpp)
+set(unit_tests unit_tests)
 
-set(SOURCES ${TEST_SOURCES})
+add_executable(unit_tests
+    main.cpp
+    ${TEST_SOURCES})
 
-add_executable(unit_tests ${SOURCES})
-target_link_libraries(unit_tests Catch2::Catch2)
+target_link_libraries(unit_tests
+    PUBLIC riichi_lib)
 
-include(ParseAndAddCatchTests)
-ParseAndAddCatchTests(unit_tests)
+target_include_directories(unit_tests
+    PUBLIC ../include/catch2)
